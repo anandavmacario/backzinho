@@ -70,10 +70,10 @@ app.get("/api/cachorros/aleatorio", (req, res) => {
 //object.values pega os valores do objeto
 //flat transforma tudo em único array
 const todasAsFotos = Object.values(cachorros).flat();
-})
+
 
 //Sorteia uma foto aleatória
-const item = sortear(todasAsFotos)
+const item = sortear(todasAsFotos);
 
 //Responder para o cliente em formato JSON
 res.json({
@@ -82,7 +82,7 @@ status: "success",
 //URL da imagem que foi sorteada
 message: 'http://localhost:${PORT}/fotos/${item}'
 });
-
+});
 //ROTA 2 - Cachorro por raça
 //Exemplo de acesso:
 //http://localhost:3000/api/cachorros/husky
@@ -114,3 +114,13 @@ res.json({
     message: 'http://localhost:${PORT}/fotos/${item}'
 });
 });
+
+//
+//INICIA O SERVIDOR
+//
+
+//Inicia o servidor express
+app.listen(PORT, () => {
+    console.log('🚀 Servidor rodando em http://localhsot:${PORT}');
+    console.log('📂 Coloque as fotos manualmente em: data/fotos/');
+})
